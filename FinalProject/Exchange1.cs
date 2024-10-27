@@ -44,17 +44,6 @@ namespace FinalProject
                         totalA = ds.Tables["cards"].Rows.Count;
                         if (tb1 <= totalA && tb1 > 0 && tb2 <= totalA && tb2 > 0)
                         {
-                            ////新增tetbox1指的那列資料到最後，當作swap的tem，最後會刪掉
-                            //SqlCommand cmd = new SqlCommand("insert", cn);
-                            //cmd.CommandType = CommandType.StoredProcedure;
-                            //cmd.Parameters.Add(new SqlParameter("@point", SqlDbType.NChar));
-                            //cmd.Parameters.Add(new SqlParameter("@suit", SqlDbType.NChar));
-                            //cmd.Parameters.Add(new SqlParameter("@joker", SqlDbType.NChar));
-                            //cmd.Parameters["@point"].Value = ds.Tables["cards"].Rows[tb1 - 1]["points"].ToString().Trim();
-                            //cmd.Parameters["@suit"].Value = ds.Tables["cards"].Rows[tb1 - 1]["suits"].ToString().Trim();
-                            //cmd.Parameters["@joker"].Value = ds.Tables["cards"].Rows[tb1 - 1]["joker"].ToString().Trim();
-                            //cmd.ExecuteNonQuery();
-
                             //將textbox1所指的row 資料更新成texrbox2所指的row之資料
                             SqlCommand cmd2 = new SqlCommand("update", cn);
                             cmd2.CommandType = CommandType.StoredProcedure;
@@ -69,11 +58,6 @@ namespace FinalProject
                             cmd2.ExecuteNonQuery();
                             //清空 cmd2 ADD資料，在重建給第二次update
                             //將textbox2所指的row 資料更新成texrbox1所指的row之資料
-                            cmd2.Parameters.Clear();
-                            cmd2.Parameters.Add(new SqlParameter("@point", SqlDbType.NChar));
-                            cmd2.Parameters.Add(new SqlParameter("@suit", SqlDbType.NChar));
-                            cmd2.Parameters.Add(new SqlParameter("@joker", SqlDbType.NChar));
-                            cmd2.Parameters.Add(new SqlParameter("@id", SqlDbType.Int));
                             cmd2.Parameters["@point"].Value = ds.Tables["cards"].Rows[tb1 - 1]["points"].ToString().Trim();
                             cmd2.Parameters["@suit"].Value = ds.Tables["cards"].Rows[tb1 - 1]["suits"].ToString().Trim();
                             cmd2.Parameters["@joker"].Value = ds.Tables["cards"].Rows[tb1 - 1]["joker"].ToString().Trim();
